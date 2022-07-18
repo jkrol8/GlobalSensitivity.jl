@@ -12,7 +12,7 @@ end
 function gsa(f, method::eFAST, p_range::AbstractVector; samples::Int, batch = false,
              distributed::Val{SHARED_ARRAY} = Val(false),
              rng::AbstractRNG = Random.default_rng(), kwargs...) where {SHARED_ARRAY}
-    @unpack num_harmonics = method
+    @unpack num_harmonics, threshold = method
     num_params = length(p_range)
     omega = [(samples - 1) ÷ (2 * num_harmonics)]
     m = omega[1] ÷ (2 * num_harmonics)
